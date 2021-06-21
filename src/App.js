@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import User from "./User";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    UserData: [
+      {
+        name: "Muazam Shahid",
+        age: "29",
+      },
+      {
+        name: "Abdullah Mujahid",
+        age: "22",
+      },
+      {
+        name: "Tooba Shahzad",
+        age: "45",
+      },
+    ],
+  };
+  render() {
+    const updateText = () => {
+      console.log("Abdullah");
+      this.setState({
+        name: (this.state.UserData[0].name = "Abdullah"),
+        age: (this.state.UserData[0].age = "42"),
+      });
+    };
+
+    return (
+      <div className="App">
+        <button onClick={updateText}>Press Me</button>
+        <User
+          name={this.state.UserData[0].name}
+          age={this.state.UserData[0].age}
+        />
+        <User
+          name={this.state.UserData[1].name}
+          age={this.state.UserData[1].age}
+        />
+        <User
+          name={this.state.UserData[2].name}
+          age={this.state.UserData[2].age}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
